@@ -562,8 +562,4 @@ select * from venda;
 select * from venda_itens;
 select * from funcionario;
 select * from registro_log;
-select * from usuario;
-
-
-  
-  
+select * from usuario; 
