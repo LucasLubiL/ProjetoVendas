@@ -19,7 +19,7 @@ public class Principal {
             
         } catch(Exception e){
             
-             System.out.println("Erro de conexão com o banco (Main)");
+             System.out.println("Erro de conexão com o banco (Main)!");
             
         }
         
