@@ -84,6 +84,18 @@ CREATE TABLE funcionario(
 
 );
 
+/*Tabela criada para logins de usuários*/
+CREATE TABLE usuario(
+
+     id_user int auto_increment not null PRIMARY KEY,
+     id_func int not null,
+     login varchar(50) not null,
+     senha varchar(50) not null,
+     cargo ENUM('Caixa', 'Estoquista', 'Gerente', 'Administrador do sistema'),
+     FOREIGN KEY(id_func) REFERENCES funcionario(id_func)
+
+);
+
 /*Tabela criada para guardar as informações relacionadas as operações realizadas dentro do banco de dados, adição, exclusão ou modificação de informações*/
 CREATE TABLE registro_log(
      
@@ -93,6 +105,8 @@ CREATE TABLE registro_log(
     data_alt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 
 );
+
+
 
 /*---------------------------------------------------------------------------------------------------------------------------------------------*/
 
@@ -362,46 +376,50 @@ CREATE VIEW relatorio_venda_pag AS
 
 /*---------------------------------------------------------------------------------------------------------------------------------------------*/
 
--- PAPÉIS --
+-- PAPÉIS/USERS --
+
+/*Criaçao de usuário*/
+Create USER 'Administrador'@'localhost' identified by 'Administrador132@';
+Create USER 'Desenvolvedor'@'localhost' identified by 'Desenvolvedor132@';
 
 /*Papel de Administrador e suas permissões, que no caso são todas para esse banco de dados*/
 CREATE ROLE Adm;
 GRANT ALL ON vendas_empresa.* TO Adm;
 
-/*Papel de Gerente e suas pemissões, que não incluem apenas a criação e exclusão de estruturas no banco*/
-CREATE ROLE Gerente;
-GRANT select, insert, update, delete ON vendas_empresa.* TO Gerente;
+CREATE ROLE Dev;
+GRANT select, insert, delete, update ON vendas_empresa.* TO Dev;
 
-/*Papel de Caixa e suas permissões, que inclui inserções nas tabelas venda e venda_itens na realização de vendas */ 
-CREATE ROLE Caixa;
-GRANT insert ON vendas_empresa.venda TO Caixa;
-GRANT insert ON vendas_empresa.venda_itens TO Caixa;
+GRANT Adm TO 'Administrador'@'localhost';
+GRANT Dev TO 'Desenvolvedor'@'localhost';
 
-/*Papel de Estoquista e suas permissões, que inclui inserção e modificações de informações em produto 
-e uso da procedure att_estoque para adição de quantidades de um produto ja registrado*/
-CREATE ROLE Estoquista;  
-GRANT select, insert, update ON vendas_empresa.produto TO Estoquista;
-GRANT EXECUTE ON PROCEDURE vendas_empresa.att_estoque TO Estoquista;
+set default role Adm to 'Administrador'@'localhost';
+set default role Dev to 'Desenvolvedor'@'localhost';
+/*
+show grants for Adm;
+show grants for Dev;
 
+show grants for 'Administrador'@'localhost';
+show grants for 'Desenvolvedor'@'localhost';
+*/
 /*---------------------------------------------------------------------------------------------------------------------------------------------*/
 
 -- POVOAMENTO DO BANCO DE DADOS --
 
 /*Inserção de dados na tabela cliente*/
-insert into cliente (nome_cliente, cpf, endereco, telefone) 
-values ('João Silva', '123.456.789-00', 'Rua das flores, 123', '(11) 91234-5678');
+INSERT INTO cliente (nome_cliente, cpf, endereco, telefone) 
+VALUES ('Pedro Almeida', '111.222.333-44', 'Rua do Sol, 45', '(21) 98765-4321');
 
-insert into cliente (nome_cliente, cpf, endereco, telefone) 
-values ('Maria Oliveira', '987.654.321-99', 'Av. Brasil, 456', '(21) 99876-5432');
+INSERT INTO cliente (nome_cliente, cpf, endereco, telefone) 
+VALUES ('Fernanda Ramos', '222.333.444-55', 'Av. das Palmeiras, 678', '(11) 91234-8765');
 
-insert into cliente (nome_cliente, cpf, endereco, telefone) 
-values ('Carlos Souza', '456.789.123-11', 'Praça central, 789', '(31) 93456-7890');
+INSERT INTO cliente (nome_cliente, cpf, endereco, telefone) 
+VALUES ('Roberto Lima', '333.444.555-66', 'Praça do Comércio, 123', '(31) 99876-5432');
 
-insert into cliente (nome_cliente, cpf, endereco, telefone) 
-values ('Ana Costa', '321.654.987-22', 'Alameda dos Ipês, 101', '(41) 98765-4321');
+INSERT INTO cliente (nome_cliente, cpf, endereco, telefone) 
+VALUES ('Isabela Ferreira', '444.555.666-77', 'Alameda dos Cedros, 89', '(41) 93456-7890');
 
-insert into cliente (nome_cliente, cpf, endereco) 
-values ('Luiza Barros', '111.222.333-44', 'Estrada velha, 999');
+INSERT INTO cliente (nome_cliente, cpf, endereco) 
+VALUES ('Gabriel Duarte', '555.666.777-88', 'Estrada Nova, 200');
 
 /*Inserção de dados na tabela produto*/
 
@@ -468,6 +486,21 @@ values ('Ana Costa', '321.654.987-22', 'Alameda dos ipês, 101', 2800.00, 'Caixa
 insert into funcionario (nome_func, cpf, endereco, salario, cargo, data_nasc, telefone) 
 values ('Luiza Barros', '111.222.333-44', 'Estrada velha, 999', 2800.00, 'Caixa', '1995-01-17', '(61) 98543-2109');
 
+/*Inserção de dados na tabela usuário*/
+insert into usuario(id_func, login, senha, cargo)
+values ('1', 'Joao', 'Joao123', 'Administrador do sistema');
+
+insert into usuario(id_func, login, senha, cargo)
+values ('2', 'Maria', 'Maria123', 'Gerente');
+
+insert into usuario(id_func, login, senha, cargo)
+values ('3', 'Carlos', 'Carlos123', 'Estoquista');
+
+insert into usuario(id_func, login, senha, cargo)
+values ('4', 'Ana', 'Ana123', 'Caixa');
+
+insert into usuario(id_func, login, senha, cargo)
+values ('5', 'Luiza', 'Luiza123', 'Caixa');
 
 /*Inserções na tabela venda e venda_itens*/
 
@@ -529,3 +562,8 @@ select * from venda;
 select * from venda_itens;
 select * from funcionario;
 select * from registro_log;
+select * from usuario;
+
+
+  
+  
