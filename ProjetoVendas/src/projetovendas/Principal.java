@@ -71,6 +71,10 @@ public class Principal {
                             System.out.println("Suas credenciais estao incorretas.");
                         }
                         
+                        resultSet.close();
+                        statement.close();
+                        connection.close();
+                        
                     } catch(Exception e){
                         System.out.println("Erro de conexao login Gerente.");
                     }
@@ -109,6 +113,10 @@ public class Principal {
                         }else{
                             System.out.println("\nSuas credenciais estao incorretas.\n");
                         }
+                        
+                        resultSet.close();
+                        statement.close();
+                        connection.close();
                         
                     } catch(Exception e){
                         System.out.println("Erro de conexao login Estoquista.");
@@ -149,6 +157,9 @@ public class Principal {
                             System.out.println("\nSuas credenciais estao incorretas.\n");
                         }
                         
+                        resultSet.close();
+                        statement.close();
+                        connection.close();
                         
                     } catch(Exception e){
                         System.out.println("Erro de conexao login Caixa.");
@@ -161,18 +172,7 @@ public class Principal {
 
             }
         } while( x != 0);
-        
-        MenuEstoquista c = new MenuEstoquista();
-        
-        c.relatorioProdutos();
-        
+            
     }
-
-   
-    
-    
-    
-    
-    
      
 }

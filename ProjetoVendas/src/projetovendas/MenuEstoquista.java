@@ -7,7 +7,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 
-
 /**
  *
  
@@ -145,7 +144,6 @@ public class MenuEstoquista implements Menu {
             System.out.println("Erro ao gerar relatorio.");  
             
         }
-        
         
     }
 

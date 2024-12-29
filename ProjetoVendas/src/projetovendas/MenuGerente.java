@@ -38,6 +38,7 @@ public class MenuGerente implements Menu {
                     break;
                 case 3:
                   //  menuFuncionarios(scanner);
+                    menuFuncionarios();
                     break;
                 case 4:
                   //  menuVendas(scanner);
@@ -119,11 +120,14 @@ public class MenuGerente implements Menu {
             System.out.println("3. Excluir Funcionario");
             System.out.print("Escolha uma ação: ");
             acao = scanner.nextInt();
+            scanner.nextLine();
 
                 switch (acao) {
                     case 0:
                         break;
                     case 1:
+                        Funcionario func = new Funcionario();
+                        func.inserirFuncionario();
                         break;
                     case 2:
                         break;

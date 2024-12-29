@@ -10,5 +10,4 @@ public class Cliente extends Pessoa{
         super(nome, cpf, endereco, telefone);
     }
     
-    
 }
