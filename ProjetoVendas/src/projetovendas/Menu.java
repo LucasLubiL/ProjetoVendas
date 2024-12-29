@@ -2,7 +2,7 @@ package projetovendas;
 
 /**
  *
- * @author Usuario
+ * @author Alexssander, Lucas, Pablo
  */
 public interface Menu {
     
