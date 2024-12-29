@@ -162,7 +162,7 @@ public class Principal {
                     
                     break;
                 default:
-                    System.out.println("Opcao invalida.");
+                    System.out.println("Opcao invalida!");
                     break;
 
             }
