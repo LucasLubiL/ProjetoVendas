@@ -1,7 +1,11 @@
 package projetovendas;
 
-import Connect.ConexaoFactor;
 import java.util.Scanner;
+import Connect.ConexaoFactor;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,6 +20,7 @@ public class Principal {
         
         int x;
         String user, senha;
+        String l,s;
         
         do{
             
@@ -39,7 +44,36 @@ public class Principal {
                     System.out.print("Senha: ");
                     senha = acao.nextLine();
                     
-                    
+                    try{
+                   
+                        ConexaoFactor conn = new ConexaoFactor();
+                        Connection connection = conn.getConnection();
+   
+                        String sql = "SELECT login, senha, cargo FROM usuario WHERE cargo = 'Gerente' and login = ? and senha = ?";           
+                        PreparedStatement statement =  connection.prepareStatement(sql);
+
+                        statement.setString(1, user);
+                        statement.setString(2, senha);
+   
+                        ResultSet resultSet = statement.executeQuery();
+                        
+                        if(resultSet.next()){
+                            l = resultSet.getString("login");
+                            s = resultSet.getString("senha");
+                              
+                            if(l.equals(user) && s.equals(senha)){
+                                System.out.println("Login realizado com sucesso!");
+                                MenuGerente ger = new MenuGerente();
+                                ger.gerente();
+                            }
+                              
+                        }else{
+                            System.out.println("Suas credenciais estao incorretas.");
+                        }
+                        
+                    } catch(Exception e){
+                        System.out.println("Erro de conexao login Gerente.");
+                    }
                     
                     break;
                 case 2:
@@ -49,6 +83,39 @@ public class Principal {
                     System.out.print("Senha: ");
                     senha = acao.nextLine();
                     
+                    try{
+                    
+                        ConexaoFactor conn = new ConexaoFactor();
+                        Connection connection = conn.getConnection();
+             
+                        String sql = "SELECT login, senha, cargo FROM usuario WHERE cargo like 'Estoquista' and login like ? and senha like ?";
+                        PreparedStatement statement =  connection.prepareStatement(sql);
+                        
+                        statement.setString(1, user);
+                        statement.setString(2, senha);
+                        
+                        ResultSet resultSet = statement.executeQuery();
+                        
+                        l = resultSet.getString("login");
+                        s = resultSet.getString("senha");
+                        
+                        if(resultSet.next()){
+                            l = resultSet.getString("login");
+                            s = resultSet.getString("senha");
+                              
+                            if(l.equals(user) && s.equals(senha)){
+                                System.out.println("\nLogin realizado com sucesso!\n");
+                                MenuEstoquista est = new MenuEstoquista();
+                                est.estoquista();
+                            }
+                              
+                        }else{
+                            System.out.println("\nSuas credenciais estao incorretas.\n");
+                        }
+                        
+                    } catch(Exception e){
+                        System.out.println("Erro de conexao login Estoquista.");
+                    }
                     
                     break;
                 case 3:
@@ -58,6 +125,40 @@ public class Principal {
                     System.out.print("Senha: ");
                     senha = acao.nextLine();
                     
+                    try{
+                    
+                        ConexaoFactor conn = new ConexaoFactor();
+                        Connection connection = conn.getConnection();
+             
+                        String sql = "SELECT login, senha, cargo FROM usuario WHERE cargo like 'Caixa' and login like ? and senha like ?";
+                        PreparedStatement statement =  connection.prepareStatement(sql);
+                        
+                        statement.setString(1, user);
+                        statement.setString(2, senha);
+                        
+                        ResultSet resultSet = statement.executeQuery();
+                        
+                        l = resultSet.getString("login");
+                        s = resultSet.getString("senha");
+                        
+                        if(resultSet.next()){
+                            l = resultSet.getString("login");
+                            s = resultSet.getString("senha");
+                              
+                            if(l.equals(user) && s.equals(senha)){
+                                System.out.println("\nLogin realizado com sucesso!\n");
+                                MenuCaixa cax = new MenuCaixa();
+                                cax.caixa();
+                            }
+                              
+                        }else{
+                            System.out.println("\nSuas credenciais estao incorretas.\n");
+                        }
+                        
+                        
+                    } catch(Exception e){
+                        System.out.println("Erro de conexao login Caixa.");
+                    }
                     
                     break;
                 default:

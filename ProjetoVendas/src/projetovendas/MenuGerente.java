@@ -15,7 +15,7 @@ public class MenuGerente implements Menu {
     void gerente() {
        
         do{
-            System.out.println("\n\n\nEscolha a aréa de operação:");
+            System.out.println("\nEscolha a aréa de operação:");
             System.out.println("0. Voltar a Pagina anterior");
             System.out.println("1: Clientes");
             System.out.println("2: Produtos");
@@ -59,7 +59,7 @@ public class MenuGerente implements Menu {
     public void menuClientes() {
         
         do{
-            System.out.println("\n\n\nVocê escolheu a tabela Cliente.");
+            System.out.println("\nVocê escolheu a tabela Cliente.");
             System.out.println("0. Voltar a Pagina anterior");
             System.out.println("1. Inserir cliente");
             System.out.println("2. Atualizar cliente");
@@ -86,7 +86,7 @@ public class MenuGerente implements Menu {
     public void menuProdutos() {
         
         do{
-            System.out.println("\n\n\nVocê escolheu a tabela Produtos.");
+            System.out.println("\nVocê escolheu a tabela Produtos.");
             System.out.println("0. Voltar a Pagina anterior");
             System.out.println("1. Cadastrar Produto");
             System.out.println("2. Atualizar Produto");
@@ -112,7 +112,7 @@ public class MenuGerente implements Menu {
     public void menuFuncionarios() {
       
         do{
-            System.out.println("\n\n\nVocê escolheu a tabela Funcionario.");
+            System.out.println("\nVocê escolheu a tabela Funcionario.");
             System.out.println("0. Voltar a Pagina anterior");
             System.out.println("1. Cadastrar Funcionario");
             System.out.println("2. Atualizar Funcionario");
@@ -136,7 +136,7 @@ public class MenuGerente implements Menu {
     public void menuVendas() {
        
         do{
-            System.out.println("\n\n\nVocê escolheu a tabela Venda.");
+            System.out.println("\nVocê escolheu a tabela Venda.");
             System.out.println("0. Voltar a Pagina anterior");
             System.out.println("1. Realizar Venda");
             System.out.print("Escolha uma ação: ");
@@ -158,7 +158,7 @@ public class MenuGerente implements Menu {
     public void menuPagamentos() {
        
         do{
-            System.out.println("\n\n\nVocê escolheu a tabela Pagamento.");
+            System.out.println("\nVocê escolheu a tabela Pagamento.");
             System.out.println("0. Voltar a Pagina anterior");
             System.out.println("1. Inserir tipo de pagamento");
             System.out.println("2. Atualizar tipo de pagamento");

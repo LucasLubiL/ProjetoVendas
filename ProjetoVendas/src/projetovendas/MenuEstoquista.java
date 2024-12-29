@@ -22,7 +22,7 @@ public class MenuEstoquista implements Menu {
     void estoquista() {
        
         do{
-            System.out.println("\n\n\nEscolha a aréa de operação:");
+            System.out.println("\nEscolha a aréa de operação:");
             System.out.println("0. Voltar a Pagina anterior");
             System.out.println("1: Produtos");
             System.out.println("2: Relatorios");
@@ -67,7 +67,7 @@ public class MenuEstoquista implements Menu {
     public void menuProdutos() {
         int acao;
         do{
-            System.out.println("\n\n\nVocê escolheu a tabela Produtos.");
+            System.out.println("\nVocê escolheu a tabela Produtos.");
             System.out.println("0. Voltar a Pagina anterior");
             System.out.println("1. Cadastrar Produto");
             System.out.println("2. Atualizar Produto");
