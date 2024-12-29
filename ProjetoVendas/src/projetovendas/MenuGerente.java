@@ -28,7 +28,7 @@ public class MenuGerente implements Menu {
 
             switch (escolha) {
                 case 0:
-                    System.out.println("Voltando");
+                    System.out.println("\nVoltando\n");
                     break;
                 case 1:
                   //  menuClientes(scanner);

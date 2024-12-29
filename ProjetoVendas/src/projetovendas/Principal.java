@@ -96,9 +96,6 @@ public class Principal {
                         
                         ResultSet resultSet = statement.executeQuery();
                         
-                        l = resultSet.getString("login");
-                        s = resultSet.getString("senha");
-                        
                         if(resultSet.next()){
                             l = resultSet.getString("login");
                             s = resultSet.getString("senha");
@@ -137,9 +134,6 @@ public class Principal {
                         statement.setString(2, senha);
                         
                         ResultSet resultSet = statement.executeQuery();
-                        
-                        l = resultSet.getString("login");
-                        s = resultSet.getString("senha");
                         
                         if(resultSet.next()){
                             l = resultSet.getString("login");

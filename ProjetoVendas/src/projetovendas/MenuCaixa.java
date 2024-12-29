@@ -17,7 +17,7 @@ public class MenuCaixa implements Menu{
      void caixa() {
        
         do{
-            System.out.println("\n\n\nEscolha a aréa de operação:");
+            System.out.println("\nEscolha a aréa de operação:");
             System.out.println("0. Voltar a Pagina anterior");
             System.out.println("1: Clientes");
             System.out.println("2: Venda");
@@ -26,7 +26,7 @@ public class MenuCaixa implements Menu{
 
             switch (escolha) {
                 case 0:
-                    System.out.println("Voltando");
+                    System.out.println("\nVoltando\n");
                     break;
                 case 1:
                   //  menuClientes(scanner);
