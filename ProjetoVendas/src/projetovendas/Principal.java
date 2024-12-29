@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author OS GOSTOSOS
+ * @author Alexssander, Lucas, Pablo
  */
 public class Principal {
     public static void main(String[] args) {

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Lucas
+ * @author Alexssander, Lucas, Pablo
  */
 public class MenuGerente implements Menu {
     Scanner scanner = new Scanner(System.in);

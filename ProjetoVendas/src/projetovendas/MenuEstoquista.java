@@ -11,7 +11,8 @@ import java.sql.ResultSetMetaData;
 /**
  *
  
-@author zr*/
+@author Alexssander, Lucas, Pablo
+*/
 public class MenuEstoquista implements Menu {
     Scanner scanner = new Scanner(System.in);
 
@@ -141,7 +142,7 @@ public class MenuEstoquista implements Menu {
              
         } catch (Exception e){
         
-            System.out.println("Erro ao gerar relaroio.");  
+            System.out.println("Erro ao gerar relatorio.");  
             
         }
         
