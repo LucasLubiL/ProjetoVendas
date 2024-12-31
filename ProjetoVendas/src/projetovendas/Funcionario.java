@@ -135,36 +135,210 @@ public class Funcionario extends Pessoa{
             String sqlUser = "INSERT INTO usuario(id_func, login, senha, cargo) values(?, ?, ?, ?)";
             String sqlBusca = "SELECT id_func FROM funcionario WHERE cpf = ?";
             
-            PreparedStatement stmp = connection.prepareStatement(sqlUser);
-            PreparedStatement stmp2 = connection.prepareStatement(sqlBusca);
+            PreparedStatement stmt = connection.prepareStatement(sqlUser);
+            PreparedStatement stmt2 = connection.prepareStatement(sqlBusca);
             
-            stmp2.setString(1, getCpf());
+            stmt2.setString(1, getCpf());
             
-            ResultSet resultSet2 = stmp2.executeQuery();
+            ResultSet resultSet2 = stmt2.executeQuery();
             
             if(resultSet2.next()){
                
                int id = resultSet2.getInt("id_func");
-               stmp.setInt(1, id);
-               stmp.setString(2, getLogin());
-               stmp.setString(3, getSenha());
-               stmp.setString(4, getCargo());
+               stmt.setInt(1, id);
+               stmt.setString(2, getLogin());
+               stmt.setString(3, getSenha());
+               stmt.setString(4, getCargo());
 
-               stmp.execute();
+               stmt.execute();
                
             }else{
                 System.out.println("Erro ao cadastrar Usuario.");
             }
             
             resultSet2.close();
-            stmp.close();
-            stmp2.close();
+            stmt.close();
+            stmt2.close();
             connection.close();
+            
+            return;
                    
         }catch(Exception e){
             System.out.println("Erro ao criar Usuario.");
+            return;
         }
 
     } 
+    
+    public void atualizarFuncionario(){
+          
+        try{
+          
+            System.out.println("\nA partir do ID do funcionario, selecione qual voce deseja atualizar:");
+              
+            ConexaoFactor conn = new ConexaoFactor();
+            Connection connection = conn.getConnection();
+              
+            String sql = "Select id_func, cpf, nome_func, cargo FROM funcionario";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+              
+            ResultSet resultSet = stmt.executeQuery();
+              
+            ResultSetMetaData metaData = resultSet.getMetaData();
+            int columnCount = metaData.getColumnCount();
+              
+            System.out.println("--------------------------------------------------------------------------------------------------------------------------");
+
+            while(resultSet.next()){
+              
+                for(int i = 1; i <= columnCount; i++){
+                       
+                    String columnName = metaData.getColumnName(i);
+                    String value = resultSet.getString(i);
+                    if(value != null){
+                       System.out.print(columnName + ": " + value + " | ");
+                    }
+       
+                }
+                System.out.println();
+            }
+            System.out.println("--------------------------------------------------------------------------------------------------------------------------");
+
+            System.out.print("Escolha o ID do funcionario: ");
+            int x = fun.nextInt();
+            fun.nextLine();
+            
+            System.out.println("Atualizacao do Funcionario:");
+            System.out.print("Nome: ");
+            super.setNome(fun.nextLine());
+            System.out.print("CPF: ");
+            super.setCpf(fun.nextLine());
+            System.out.print("Endereco: ");
+            super.setEndereco(fun.nextLine());
+            System.out.print("Telefone(OPCIONAL): ");
+            super.setTelefone(fun.nextLine());
+            System.out.print("Cargo: ");
+            this.setCargo(fun.nextLine());
+            System.out.print("Salario: ");
+            this.setSalario(fun.nextDouble());
+            fun.nextLine();
+            System.out.print("Data de Nascimento: ");
+            this.setNasc(fun.nextLine());
+
+            LocalDate localDate = LocalDate.parse(this.nasc);
+            Date sqlDate = Date.valueOf(localDate);
+            
+            try{
+                
+                ConexaoFactor conn2 = new ConexaoFactor();
+                Connection connection2 = conn2.getConnection();
+                
+                String sql2 = "UPDATE funcionario set nome_func = ?, cpf = ?, endereco = ?, salario = ?, cargo = ?, data_nasc = ?, telefone = ? WHERE id_func = ?";
+  
+                PreparedStatement stmt2 = connection2.prepareStatement(sql2);
+                
+                stmt2.setString(1, getNome());
+                stmt2.setString(2, getCpf());
+                stmt2.setString(3, getEndereco());
+                stmt2.setDouble(4, getSalario());
+                stmt2.setString(5, getCargo());
+                stmt2.setDate(6, sqlDate);
+                stmt2.setString(7, getTelefone());
+                stmt2.setInt(8, x);
+                
+                stmt2.execute();
+
+                stmt2.close();
+                connection2.close();
+                
+            } catch(Exception e){
+                System.out.println("Erro ao inserir dados atualizados Funcionario");
+                return;
+            }
+            
+            connection.close();
+            resultSet.close();
+            stmt.close();
+            
+            System.out.println("ATUALIZACAO CONCLUIDA COM SUCESSO!");
+            System.out.println("Nome: " + super.getNome() + " | CPF: " + super.getCpf() + " | Endereco: " + super.getEndereco() + " | Salario: " + this.getSalario() + " | Cargo: " + this.getCargo() + " | Data de Nascimento: " + this.getNasc() + " | Telefone: " + super.getTelefone() + "\n");
+            
+            return;
+            
+          } catch(Exception e){
+              System.out.println("Erro ao atualizar Funcionario.");
+              return;
+          }
+    
+    }
+    
+    public void deleteFuncionario(){
+    
+        System.out.println("Escolha o ID do funcionario para deletar.");
+    
+        try{
+          
+            System.out.println("\nA partir do ID do funcionario, selecione qual voce deseja deleter:");
+              
+            ConexaoFactor conn = new ConexaoFactor();
+            Connection connection = conn.getConnection();
+              
+            String sql = "Select id_func, cpf, nome_func, cargo FROM funcionario";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+              
+            ResultSet resultSet = stmt.executeQuery();
+              
+            ResultSetMetaData metaData = resultSet.getMetaData();
+            int columnCount = metaData.getColumnCount();
+              
+            System.out.println("--------------------------------------------------------------------------------------------------------------------------");
+
+            while(resultSet.next()){
+              
+                for(int i = 1; i <= columnCount; i++){
+                       
+                    String columnName = metaData.getColumnName(i);
+                    String value = resultSet.getString(i);
+                    if(value != null){
+                       System.out.print(columnName + ": " + value + " | ");
+                    }
+       
+                }
+                System.out.println();
+            }
+            System.out.println("--------------------------------------------------------------------------------------------------------------------------");
+
+            System.out.print("Escolha o ID do funcionario: ");
+            int x = fun.nextInt();
+            
+            String sqlCall = "CALL delete_in_ID_funcionario(?)";
+            String sqlCall2 = "CALL delete_in_ID_usuario(?)";
+            
+            PreparedStatement call = connection.prepareStatement(sqlCall);
+            PreparedStatement call2 = connection.prepareStatement(sqlCall2);
+            
+            call.setInt(1, x);
+            call2.setInt(1, x);
+            
+            call2.executeUpdate();
+            call.executeUpdate();
+            
+            System.out.println("Funcionario deletado.\n");
+            
+            stmt.close();
+            connection.close();
+            resultSet.close();
+            call.close();
+            call2.close();
+            
+            return;
+            
+        } catch(Exception e){
+            System.out.println("Erro ao deletar Funcionario.");
+            e.printStackTrace();
+            return;
+        }
+        
+    }
     
 }

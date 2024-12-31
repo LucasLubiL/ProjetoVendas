@@ -139,9 +139,12 @@ public class MenuEstoquista implements Menu {
              statement.close();
              connection.close();
              
+             return;
+             
         } catch (Exception e){
         
             System.out.println("Erro ao gerar relatorio.");  
+            return;
             
         }
         

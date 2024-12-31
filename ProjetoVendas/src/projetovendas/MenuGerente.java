@@ -130,8 +130,12 @@ public class MenuGerente implements Menu {
                         func.inserirFuncionario();
                         break;
                     case 2:
+                        Funcionario func2 = new Funcionario();
+                        func2.atualizarFuncionario();
                         break;
                     case 3:
+                        Funcionario func3 = new Funcionario();
+                        func3.deleteFuncionario();
                         break;
                 }
         }while(acao != 0);    }
