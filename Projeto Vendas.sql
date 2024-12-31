@@ -184,6 +184,16 @@ AFTER INSERT ON cliente
    END //
 DELIMITER ;
 
+DELIMITER //
+CREATE TRIGGER log_insert_usuario
+AFTER INSERT ON usuario
+   FOR EACH ROW
+   BEGIN
+     insert into registro_log (tabela_alt, acao)
+     values ('usuario', 'inserção de usuario');
+   END //
+DELIMITER ;
+
 /*---------------------------------------------------------------------------------------------------------------------------------------------*/
 
 -- TRIGGERS UPDATE --
@@ -269,9 +279,20 @@ AFTER DELETE ON pagamento
    END //
 DELIMITER ;
 
+/*Trigger responsável por atualizar a tabela 'registro_log' na exclusão de informações dentro da tabela 'usuario'*/
+DELIMITER //
+CREATE TRIGGER log_delete_usuario
+AFTER DELETE ON usuario
+   FOR EACH ROW
+   BEGIN
+     insert into registro_log (tabela_alt, acao)
+     values ('usuario', 'delete de usuario');
+   END //
+DELIMITER ;
+
 /*---------------------------------------------------------------------------------------------------------------------------------------------*/
 
--- TRIGGER/PROCEDURE ATT --
+-- TRIGGER/PROCEDURE ATT and DELETE --
 
 /*Trigger responsável por atualizar o estoque na realização de uma venda*/
 DELIMITER //
@@ -300,18 +321,14 @@ mas que checa se aquele produto ja foi vendido alguma vez para só permitir a ex
 DELIMITER //
 CREATE PROCEDURE delete_in_ID_produto(in id_produto int)
     BEGIN 
-	declare seUsou boolean;
-	if exists (select 1 from produto where produto.id_prod = id_produto) then
-		
-	   select produto.usada into seUsou 
-	   from produto 
-	   where id_produto = produto.id_prod;
+		 declare seUsou boolean;
+		 select produto.usada into seUsou 
+		 from produto 
+		 where id_produto = produto.id_prod;
 
-	   if seUsou is false then
-	      delete  from produto where produto.id_prod = id_produto;
-	   end if;
-
-       end if;
+		 if seUsou is false then
+			delete  from produto where produto.id_prod = id_produto;
+		 end if;
     END // 
 DELIMITER ;
 
@@ -320,20 +337,31 @@ mas que checa se aquele pagamento ja foi usado em alguma venda para só permitir
 DELIMITER //
 CREATE PROCEDURE delete_in_ID_pagamento(in id_pagamento int)
     BEGIN 
-	declare seUsou boolean;
-	if exists (select 1 from pagamento where pagamento.id_pag = id_pagamento) then
-        
+	     declare seUsou boolean;
 	     select pagamento.usada into seUsou 
 	     from pagamento
 	     where id_pagamento = pagamento.id_pag;
             
 	     if seUsou is false then
-		 delete  from pagamento where pagamento.id_pag = id_pagamento;
+			delete  from pagamento where pagamento.id_pag = id_pagamento;
 	     end if;
-            
-       end if;
     END // 
 DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE delete_in_ID_funcionario(in func int)
+    BEGIN 
+		delete from funcionario where id_func = func;
+    END // 
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE delete_in_ID_usuario(in usu int)
+    BEGIN 
+		delete from usuario where id_func = usu;
+    END // 
+DELIMITER ;
+
 
 /*---------------------------------------------------------------------------------------------------------------------------------------------*/
 
@@ -562,4 +590,4 @@ select * from venda;
 select * from venda_itens;
 select * from funcionario;
 select * from registro_log;
-select * from usuario; 
+select * from usuario;
