@@ -184,6 +184,7 @@ AFTER INSERT ON cliente
    END //
 DELIMITER ;
 
+/*Trigger responsável por atualizar a tabela 'registro_log' na inserção dentro da tabela 'usuario'*/
 DELIMITER //
 CREATE TRIGGER log_insert_usuario
 AFTER INSERT ON usuario
@@ -348,6 +349,7 @@ CREATE PROCEDURE delete_in_ID_pagamento(in id_pagamento int)
     END // 
 DELIMITER ;
 
+/*Procedure responsável por realizar a exclusão de informaçoes de um funcionario com base no id que foi dado como entrada*/
 DELIMITER //
 CREATE PROCEDURE delete_in_ID_funcionario(in func int)
     BEGIN 
@@ -355,6 +357,7 @@ CREATE PROCEDURE delete_in_ID_funcionario(in func int)
     END // 
 DELIMITER ;
 
+/*Procedure responsável por realizar a exclusão de informaçoes de um usuario com base no id que foi dado como entrada*/
 DELIMITER //
 CREATE PROCEDURE delete_in_ID_usuario(in usu int)
     BEGIN 
@@ -530,6 +533,7 @@ values ('4', 'Ana', 'Ana123', 'Caixa');
 insert into usuario(id_func, login, senha, cargo)
 values ('5', 'Luiza', 'Luiza123', 'Caixa');
 
+
 /*Inserções na tabela venda e venda_itens*/
 
             -- Venda do cliente João Silva --
@@ -582,12 +586,12 @@ values (5, 2, 159.90, 159.90, 1);
 insert into venda_itens (id_venda, id_prod, preco, preco_total, quant_itens) 
 values (5, 8, 79.90, 159.80, 2);  
 
--- selects para visualizar as informações(apagar depois)
-select * from cliente;
+-- selects para visualizar as informações
+/*select * from cliente;
 select * from produto;
 select * from pagamento;
 select * from venda;
 select * from venda_itens;
 select * from funcionario;
 select * from registro_log;
-select * from usuario;
+select * from usuario;*/
