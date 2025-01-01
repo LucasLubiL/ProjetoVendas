@@ -322,14 +322,14 @@ mas que checa se aquele produto ja foi vendido alguma vez para só permitir a ex
 DELIMITER //
 CREATE PROCEDURE delete_in_ID_produto(in id_produto int)
     BEGIN 
-		 declare seUsou boolean;
-		 select produto.usada into seUsou 
-		 from produto 
-		 where id_produto = produto.id_prod;
+        declare seUsou boolean;
+	select produto.usada into seUsou 
+	from produto 
+	where id_produto = produto.id_prod;
 
-		 if seUsou is false then
-			delete  from produto where produto.id_prod = id_produto;
-		 end if;
+        if seUsou is false then
+	    delete  from produto where produto.id_prod = id_produto;
+	end if;
     END // 
 DELIMITER ;
 
@@ -338,14 +338,14 @@ mas que checa se aquele pagamento ja foi usado em alguma venda para só permitir
 DELIMITER //
 CREATE PROCEDURE delete_in_ID_pagamento(in id_pagamento int)
     BEGIN 
-	     declare seUsou boolean;
-	     select pagamento.usada into seUsou 
-	     from pagamento
-	     where id_pagamento = pagamento.id_pag;
+	declare seUsou boolean;
+	select pagamento.usada into seUsou 
+	from pagamento
+	where id_pagamento = pagamento.id_pag;
             
-	     if seUsou is false then
-			delete  from pagamento where pagamento.id_pag = id_pagamento;
-	     end if;
+	if seUsou is false then
+	    delete  from pagamento where pagamento.id_pag = id_pagamento;
+	end if;
     END // 
 DELIMITER ;
 
@@ -353,7 +353,7 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE delete_in_ID_funcionario(in func int)
     BEGIN 
-		delete from funcionario where id_func = func;
+	delete from funcionario where id_func = func;
     END // 
 DELIMITER ;
 
@@ -361,7 +361,7 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE delete_in_ID_usuario(in usu int)
     BEGIN 
-		delete from usuario where id_func = usu;
+	delete from usuario where id_func = usu;
     END // 
 DELIMITER ;
 
