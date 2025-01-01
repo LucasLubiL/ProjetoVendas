@@ -32,6 +32,7 @@ public class MenuGerente implements Menu {
                     break;
                 case 1:
                   //  menuClientes(scanner);
+                    menuClientes();
                     break;
                 case 2:
                   //  menuProdutos(scanner);
@@ -64,18 +65,20 @@ public class MenuGerente implements Menu {
             System.out.println("0. Voltar a Pagina anterior");
             System.out.println("1. Inserir cliente");
             System.out.println("2. Atualizar cliente");
-            System.out.println("3. Excluir cliente");
             System.out.print("Escolha uma ação: ");
             acao = scanner.nextInt();
 
             switch (acao) {
                 case 0:
+                    System.out.println("Voltando...");
                     break;
                 case 1:
+                    Cliente cli = new Cliente();
+                    cli.inserirCliente();
                     break;
                 case 2:
-                    break;
-                case 3:
+                    Cliente cli2 = new Cliente();
+                    cli2.atualizarCliente();
                     break;
                 
             }
@@ -124,6 +127,7 @@ public class MenuGerente implements Menu {
 
                 switch (acao) {
                     case 0:
+                        System.out.println("Voltando...");
                         break;
                     case 1:
                         Funcionario func = new Funcionario();

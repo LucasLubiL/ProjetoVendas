@@ -204,7 +204,7 @@ public class Funcionario extends Pessoa{
             }
             System.out.println("--------------------------------------------------------------------------------------------------------------------------");
 
-            System.out.print("Escolha o ID do funcionario: ");
+            System.out.print("ID: ");
             int x = fun.nextInt();
             fun.nextLine();
             

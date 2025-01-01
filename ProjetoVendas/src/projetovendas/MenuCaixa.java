@@ -49,7 +49,6 @@ public class MenuCaixa implements Menu{
             System.out.println("0. Voltar a Pagina anterior");
             System.out.println("1. Inserir cliente");
             System.out.println("2. Atualizar cliente");
-            System.out.println("3. Consulta clientes");
             System.out.print("Escolha uma ação: ");
             acao = scanner.nextInt();
 
@@ -60,8 +59,7 @@ public class MenuCaixa implements Menu{
                     break;
                 case 2:
                     break;
-                case 3:
-                    break;
+
             }
         }while(acao != 0);
     }
