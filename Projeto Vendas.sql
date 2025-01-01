@@ -106,8 +106,6 @@ CREATE TABLE registro_log(
 
 );
 
-
-
 /*---------------------------------------------------------------------------------------------------------------------------------------------*/
 
 -- TRIGGERS INSERT --
@@ -323,7 +321,7 @@ DELIMITER //
 CREATE PROCEDURE delete_in_ID_produto(in id_produto int)
     BEGIN 
         declare seUsou boolean;
-	select produto.usada into seUsou 
+	select produto.usado into seUsou 
 	from produto 
 	where id_produto = produto.id_prod;
 
@@ -339,7 +337,7 @@ DELIMITER //
 CREATE PROCEDURE delete_in_ID_pagamento(in id_pagamento int)
     BEGIN 
 	declare seUsou boolean;
-	select pagamento.usada into seUsou 
+	select pagamento.usado into seUsou 
 	from pagamento
 	where id_pagamento = pagamento.id_pag;
             
@@ -364,7 +362,6 @@ CREATE PROCEDURE delete_in_ID_usuario(in usu int)
 	delete from usuario where id_func = usu;
     END // 
 DELIMITER ;
-
 
 /*---------------------------------------------------------------------------------------------------------------------------------------------*/
 
