@@ -51,7 +51,7 @@ public class Cliente extends Pessoa{
             
             stmt.execute();
             
-            System.out.println("Cliente cadastrado com sucesso!");
+            System.out.println("Cliente cadastrado com sucesso!\n");
             
             connection.close();
             stmt.close();
@@ -59,7 +59,7 @@ public class Cliente extends Pessoa{
             return;
             
         } catch(Exception e){
-            System.out.println("Erro ao inserir Cliente");
+            System.out.println("Erro ao inserir Cliente\n");
             return;
         }
         
@@ -136,10 +136,11 @@ public class Cliente extends Pessoa{
                 stmt2.close();
                 connection2.close();
                 
-                System.out.println("Cliente atualizado com sucesso!");
+                System.out.println("ATUALIZACAO CONCLUIDA COM SUCESSO!");
+                System.out.println("Nome: " + super.getNome() + "| CPF: " + super.getCpf() + "| Endereco: " + super.getEndereco() + "| Telefone: " + super.getTelefone());
             
             } catch(Exception e){
-                System.out.println("Erro ao inserir os dados atualizados no banco");
+                System.out.println("Erro ao inserir os dados atualizados no banco.\n");
             }
             
             stmt.close();
@@ -149,7 +150,7 @@ public class Cliente extends Pessoa{
             return;
             
         } catch(Exception e){
-            System.out.println("Erro ao atualizar Cliente.");
+            System.out.println("Erro ao atualizar Cliente.\n");
             return;
         }
         

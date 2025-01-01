@@ -28,7 +28,7 @@ public class MenuGerente implements Menu {
 
             switch (escolha) {
                 case 0:
-                    System.out.println("\nVoltando\n");
+                    System.out.println("\nVoltando...\n");
                     break;
                 case 1:
                   //  menuClientes(scanner);
@@ -46,6 +46,7 @@ public class MenuGerente implements Menu {
                     break;
                 case 5:
                    // menuPagamentos(scanner);
+                    menuPagamentos();
                     break;
                 case 6:
                     // logica pro relatorio
@@ -70,7 +71,7 @@ public class MenuGerente implements Menu {
 
             switch (acao) {
                 case 0:
-                    System.out.println("Voltando...");
+                    System.out.println("\nVoltando...\n");
                     break;
                 case 1:
                     Cliente cli = new Cliente();
@@ -100,6 +101,7 @@ public class MenuGerente implements Menu {
 
             switch (acao) {
                 case 0:
+                    System.out.println("\nVoltando...\n");
                     break;
                 case 1:
                     break;
@@ -127,7 +129,7 @@ public class MenuGerente implements Menu {
 
                 switch (acao) {
                     case 0:
-                        System.out.println("Voltando...");
+                        System.out.println("\nVoltando...\n");
                         break;
                     case 1:
                         Funcionario func = new Funcionario();
@@ -156,6 +158,7 @@ public class MenuGerente implements Menu {
 
             switch (acao) {
                 case 0:
+                    System.out.println("\nVoltando...\n");
                     break;
                 case 1:
                     break;
@@ -173,20 +176,23 @@ public class MenuGerente implements Menu {
             System.out.println("\nVocê escolheu a tabela Pagamento.");
             System.out.println("0. Voltar a Pagina anterior");
             System.out.println("1. Inserir tipo de pagamento");
-            System.out.println("2. Atualizar tipo de pagamento");
-            System.out.println("3. Excluir tipo de pagamento");
+            System.out.println("2. Excluir tipo de pagamento");
             System.out.print("Escolha uma ação: ");
             acao = scanner.nextInt();
 
             switch(acao){
                 case 0:
+                    System.out.println("\nVoltando...\n");
                     break;
                 case 1:
+                    Pagamento pag = new Pagamento();
+                    pag.inserirPagamento();
                     break;
                 case 2:
+                    Pagamento pag2 = new Pagamento();
+                    pag2.deletarPagamento();
                     break;
-                case 3:
-                    break;
+
             }
         }while(acao != 0);    
     }
