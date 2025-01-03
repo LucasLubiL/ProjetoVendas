@@ -36,6 +36,7 @@ public class MenuGerente implements Menu {
                     break;
                 case 2:
                   //  menuProdutos(scanner);
+                    menuProdutos();
                     break;
                 case 3:
                   //  menuFuncionarios(scanner);
@@ -104,10 +105,16 @@ public class MenuGerente implements Menu {
                     System.out.println("\nVoltando...\n");
                     break;
                 case 1:
+                    Produto pro = new Produto();
+                    pro.inserirProduto();
                     break;
                 case 2:
+                    Produto pro2 = new Produto();
+                    pro2.atualizarProduto();
                     break;
                 case 3:
+                    Produto pro3 = new Produto();
+                    pro3.deleteProduto();
                     break;
             }
         }while(acao != 0); 

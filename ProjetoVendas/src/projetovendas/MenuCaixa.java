@@ -54,10 +54,15 @@ public class MenuCaixa implements Menu{
 
             switch (acao) {
                 case 0:
+                    System.out.println("\nVoltando...\n");
                     break;
                 case 1:
+                    Cliente cli = new Cliente();
+                    cli.inserirCliente();
                     break;
                 case 2:
+                    Cliente cli2 = new Cliente();
+                    cli2.atualizarCliente();
                     break;
 
             }

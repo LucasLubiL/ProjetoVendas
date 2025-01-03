@@ -34,21 +34,11 @@ public class MenuEstoquista implements Menu {
                     break;
                 case 1:
                   //  menuClientes(scanner);
+                    menuProdutos();
                     break;
                 case 2:
                   //  menuProdutos(scanner);
-                    break;
-                case 3:
-                  //  menuFuncionarios(scanner);
-                    break;
-                case 4:
-                  //  menuVendas(scanner);
-                    break;
-                case 5:
-                   // menuPagamentos(scanner);
-                    break;
-                case 6:
-                    // logica pro relatorio
+                    relatorioProdutos();
                     break;
                 default:
                     System.out.println("Opção inválida.");
@@ -76,12 +66,19 @@ public class MenuEstoquista implements Menu {
 
             switch (acao) {
                 case 0:
+                    System.out.println("\nVoltando...\n");
                     break;
                 case 1:
+                    Produto pro = new Produto();
+                    pro.inserirProduto();
                     break;
                 case 2:
+                    Produto pro2 = new Produto();
+                    pro2.atualizarProduto();
                     break;
                 case 3:
+                    Produto pro3 = new Produto();
+                    pro3.deleteProduto();
                     break;
             }
         }while(acao != 0);

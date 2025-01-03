@@ -161,6 +161,8 @@ public class Funcionario extends Pessoa{
             stmt2.close();
             connection.close();
             
+            System.out.println("Funcionario e Usuario inserido com sucesso!\n");
+            
             return;
                    
         }catch(Exception e){
