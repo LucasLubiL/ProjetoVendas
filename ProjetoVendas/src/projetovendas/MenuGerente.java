@@ -31,27 +31,22 @@ public class MenuGerente implements Menu {
                     System.out.println("\nVoltando...\n");
                     break;
                 case 1:
-                  //  menuClientes(scanner);
                     menuClientes();
                     break;
                 case 2:
-                  //  menuProdutos(scanner);
                     menuProdutos();
                     break;
                 case 3:
-                  //  menuFuncionarios(scanner);
                     menuFuncionarios();
                     break;
                 case 4:
-                  //  menuVendas(scanner);
                     menuVendas();
                     break;
                 case 5:
-                   // menuPagamentos(scanner);
                     menuPagamentos();
                     break;
                 case 6:
-                    // logica pro relatorio
+                    menuRelatorios();
                     break;
                 default:
                     System.out.println("Opção inválida.");
@@ -166,6 +161,7 @@ public class MenuGerente implements Menu {
             System.out.println("0. Voltar a Pagina anterior");
             System.out.println("1. Realizar Venda");
             System.out.println("2. Consultar Venda");
+            System.out.println("3. Cancelar Venda");
             System.out.print("Escolha uma ação: ");
             acao = scanner.nextInt();
 
@@ -216,7 +212,39 @@ public class MenuGerente implements Menu {
         }while(acao != 0);    
     }
     
-    public void relatorios(){
+    public void menuRelatorios(){
+        
+        do{
+            System.out.println("\nVocê escolheu a tabela Relatorio.");
+            System.out.println("0. Voltar a Pagina anterior");
+            System.out.println("1. Relatorio Produtos.");
+            System.out.println("2. Relatorio Vendas Emitidas.");
+            System.out.println("3. Relatorio Vendas Cancelados.");
+            System.out.println("4. Relatorio Vendas p/ Pagamento.");
+            System.out.print("Escolha uma ação: ");
+            acao = scanner.nextInt();
+
+            switch(acao){
+                case 0:
+                    System.out.println("\nVoltando...\n");
+                    break;
+                case 1:
+                    Relatorios rel = new Relatorios();
+                    rel.relatorioProduto();
+                case 2:
+                    Relatorios rel2 = new Relatorios();
+                    rel2.vendaEmitida();
+                    break;
+                case 3:
+                    Relatorios rel3 = new Relatorios();
+                    rel3.vendaCancelada();
+                    break;
+                case 4:
+                    Relatorios rel4 = new Relatorios();
+                    rel4.vendaPagamento();
+                    break;
+            }
+        }while(acao != 0);   
         
     }
     

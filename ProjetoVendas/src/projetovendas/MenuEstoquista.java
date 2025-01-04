@@ -33,11 +33,9 @@ public class MenuEstoquista implements Menu {
                     System.out.println("\nVoltando\n");
                     break;
                 case 1:
-                  //  menuClientes(scanner);
                     menuProdutos();
                     break;
                 case 2:
-                  //  menuProdutos(scanner);
                     relatorioProdutos();
                     break;
                 default:

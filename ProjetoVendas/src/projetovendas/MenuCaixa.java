@@ -29,10 +29,10 @@ public class MenuCaixa implements Menu{
                     System.out.println("\nVoltando\n");
                     break;
                 case 1:
-                  //  menuClientes(scanner);
+                    menuClientes();
                     break;
                 case 2:
-                  //  menuVendas(scanner);
+                    menuVendas();
                     break;
                 default:
                     System.out.println("Opção inválida.");
@@ -91,8 +91,11 @@ public class MenuCaixa implements Menu{
 
             switch (acao) {
                 case 0:
+                    System.out.println("\nVoltando...\n");
                     break;
                 case 1:
+                    Venda ven = new Venda();
+                    ven.realizarVenda();
                     break;
             }
         }while(acao != 0);
