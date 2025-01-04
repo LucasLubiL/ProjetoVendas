@@ -607,7 +607,7 @@ values (5, 8, 79.90, 159.80, 2);
 select * from produto;
 select * from pagamento;
 select * from venda;
-select * from venda_itens;z
+select * from venda_itens;
 select * from funcionario;
 select * from registro_log;
 select * from usuario;*/
