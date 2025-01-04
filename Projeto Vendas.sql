@@ -391,17 +391,29 @@ CREATE PROCEDURE relatorio_vendas_canceladas(in data_v date, in data_v2 date)
     END // 
 DELIMITER ;
 
-/*View para criar relatorio que mostra todas as informaçoes de todos produtos*/
+/*View para criar relatorio que mostra as informações dos produtos*/
 CREATE VIEW relatorio_produto AS
-   select * from produto;
-   
+   select id_prod as ID, nome as Nome, preco as Preço,quant as Estoque,marca as Marca,
+   categoria as Categoria,tam_camisa as 'Tamanho Top',tam_calca as 'Tamanho botton',tam_calcado as 'Tamanho calçado', 
+   usado as 'Vendeu(1-sim 0-não)' from produto;
+  
+
 /*View para criar relatório de pagamento, com os tipos de pagamento e seus ids e também 
 quantas vezes esse tipo de pagamento foi usado em vendas*/
 CREATE VIEW relatorio_venda_pag AS
    select p.id_pag,p.nome_tipo, COUNT(v.id_venda) from pagamento p
    JOIN venda v ON v.id_pag = p.id_pag
    GROUP BY p.nome_tipo;
-
+   
+  /*View para criar relatório de log para o administrador*/ 
+  CREATE VIEW relatorio_log AS
+   select id_log as ID,tabela_alt as 'Tabela alterada', acao as 'Operação realizada',data_alt as 'Data da alterção' from registro_log;
+    
+    
+ /*View para criar relatório para visualização dos usuários da tabela 'usuario'*/ 
+  CREATE VIEW relatorio_usuario AS
+   select id_user as ID,funcionario.nome_func as 'Nome do funcionário',login as Login,senha as Senha,usuario.cargo as Cargo  from usuario
+   join funcionario on funcionario.id_func=usuario.id_func;
 /*---------------------------------------------------------------------------------------------------------------------------------------------*/
 
 -- PAPÉIS/USERS --
@@ -422,6 +434,9 @@ GRANT Dev TO 'Desenvolvedor'@'localhost';
 
 set default role Adm to 'Administrador'@'localhost';
 set default role Dev to 'Desenvolvedor'@'localhost';
+
+
+
 /*
 show grants for Adm;
 show grants for Dev;
@@ -434,6 +449,10 @@ show grants for 'Desenvolvedor'@'localhost';
 -- POVOAMENTO DO BANCO DE DADOS --
 
 /*Inserção de dados na tabela cliente*/
+
+INSERT INTO cliente (nome_cliente, cpf, endereco) 
+VALUES ('Consumidor', '000000', '000000');
+
 INSERT INTO cliente (nome_cliente, cpf, endereco, telefone) 
 VALUES ('Pedro Almeida', '111.222.333-44', 'Rua do Sol, 45', '(21) 98765-4321');
 
@@ -588,7 +607,7 @@ values (5, 8, 79.90, 159.80, 2);
 select * from produto;
 select * from pagamento;
 select * from venda;
-select * from venda_itens;
+select * from venda_itens;z
 select * from funcionario;
 select * from registro_log;
 select * from usuario;*/
