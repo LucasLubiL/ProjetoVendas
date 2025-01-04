@@ -405,15 +405,6 @@ CREATE VIEW relatorio_venda_pag AS
    JOIN venda v ON v.id_pag = p.id_pag
    GROUP BY p.nome_tipo;
    
-  /*View para criar relatório de log para o administrador*/ 
-  CREATE VIEW relatorio_log AS
-   select id_log as ID,tabela_alt as 'Tabela alterada', acao as 'Operação realizada',data_alt as 'Data da alterção' from registro_log;
-    
-    
- /*View para criar relatório para visualização dos usuários da tabela 'usuario'*/ 
-  CREATE VIEW relatorio_usuario AS
-   select id_user as ID,funcionario.nome_func as 'Nome do funcionário',login as Login,senha as Senha,usuario.cargo as Cargo  from usuario
-   join funcionario on funcionario.id_func=usuario.id_func;
 /*---------------------------------------------------------------------------------------------------------------------------------------------*/
 
 -- PAPÉIS/USERS --
