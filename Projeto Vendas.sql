@@ -401,9 +401,9 @@ CREATE VIEW relatorio_produto AS
 /*View para criar relatório de pagamento, com os tipos de pagamento e seus ids e também 
 quantas vezes esse tipo de pagamento foi usado em vendas*/
 CREATE VIEW relatorio_venda_pag AS
-   select p.id_pag,p.nome_tipo, COUNT(v.id_venda) from pagamento p
+   select p.id_pag as 'Id Pagamento',p.nome_tipo as Nome, COUNT(v.id_venda) as 'Quantidade Vendas' from pagamento p
    JOIN venda v ON v.id_pag = p.id_pag
-   GROUP BY p.nome_tipo;
+   GROUP BY p.id_pag, p.nome_tipo;
    
 /*---------------------------------------------------------------------------------------------------------------------------------------------*/
 
