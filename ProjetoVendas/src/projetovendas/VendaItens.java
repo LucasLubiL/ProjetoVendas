@@ -16,7 +16,6 @@ import javax.swing.JOptionPane;
  */
 public class VendaItens {
     
-    private int idVenda;
     private int idProd;
     private double preco;
     private double precoTotal;
@@ -24,22 +23,13 @@ public class VendaItens {
     
     public VendaItens(){};
 
-    public VendaItens(int idVenda, int idProd, double preco, double precoTotal, int quantItens) {
+    public VendaItens(int idProd, double preco, double precoTotal, int quantItens) {
         
-        this.idVenda = idVenda;
         this.idProd = idProd;
         this.preco = preco;
         this.precoTotal = precoTotal;
         this.quantItens = quantItens;
         
-    }
-
-    public int getIdVenda() {
-        return idVenda;
-    }
-
-    public void setIdVenda(int id_venda) {
-        this.idVenda = id_venda;
     }
 
     public int getIdProd() {
@@ -73,7 +63,5 @@ public class VendaItens {
     public void setQuantItens(int quantItens) {
         this.quantItens = quantItens;
     }
-    
-    
     
 }

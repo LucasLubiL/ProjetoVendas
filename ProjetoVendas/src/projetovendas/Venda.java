@@ -111,8 +111,12 @@ public class Venda {
             }
             System.out.println("--------------------------------------------------------------------------------------------------------------------------");
             
-            System.out.print("ID produto: ");
+            System.out.print("ID produto (0 - voltar): ");
             x = ve.nextInt();
+            if(x == 0){
+                System.out.println("Voltando...\n");
+                return;
+            }
             System.out.println("Digite a quantidade desejada");
             y = ve.nextInt();
             
@@ -147,6 +151,9 @@ public class Venda {
                     }
                 }
                 
+                stmt2.close();
+                rs2.close();
+                
                 System.out.print("ID produto: ");
                 x = ve.nextInt();
                 System.out.println("Digite a quantidade desejada");
@@ -155,6 +162,12 @@ public class Venda {
             }
             
             System.out.println("Selecao de produtos finalizada.\n");
+            
+            connection.close();
+            stmt.close();
+            rs.close();
+            
+            
             
         }catch(Exception e){
             System.out.println("Erro ao selecionar produto.\n");
@@ -214,7 +227,7 @@ public class Venda {
             ConexaoFactor conn3 = new ConexaoFactor();
             Connection connection3 = conn3.getConnection();
 
-            String sql4 = "SELECT id_pag as Id Pagamento, nome_tipo as Nome FROM pagamento";
+            String sql4 = "SELECT id_pag as 'Id Pagamento', nome_tipo as Nome FROM pagamento";
                     
             PreparedStatement stmt4 = connection3.prepareStatement(sql4);
                     
@@ -270,11 +283,157 @@ public class Venda {
             
             stmt5.execute();
             
+            System.out.println("Venda realizada com sucesso!\n");
+            
+            connection4.close();
+            stmt5.close();
+            
         } catch(Exception e){
             System.out.println("Erro ao realizar a venda.\n");
         }
+        
+        try{
+        
+            ConexaoFactor conn5 = new ConexaoFactor();
+            Connection connection5 = conn5.getConnection();
+             
+            String sql6 = "INSERT INTO venda_itens(id_venda, id_prod, preco, preco_total, quant_itens) values(?, ?, ?, ?, ?)";
+            String sql7 = "SELECT MAX(id_venda) FROM venda";
+             
+            PreparedStatement stmt6 = connection5.prepareStatement(sql6);
+            PreparedStatement stmt7 = connection5.prepareStatement(sql7);
+             
+            ResultSet rs = stmt7.executeQuery();
+             
+            int id = 0;
             
+            if(rs.next()){
+                id = rs.getInt(1);
+            }
+             
+            for(VendaItens aux : ven){
+             
+                stmt6.setInt(1, id);
+                stmt6.setInt(2, aux.getIdProd());
+                stmt6.setDouble(3, aux.getPreco());
+                stmt6.setDouble(4, aux.getPrecoTotal());
+                stmt6.setInt(5, aux.getQuantItens());
+                
+                stmt6.execute();
+             
+            }
+            
+            stmt6.close();
+            connection5.close();
+            rs.close();
+            stmt7.close();
+            
+            System.out.println("Venda_Itens sucesso.\n");
+        
+        } catch(Exception e){
+            System.out.println("Erro ao inserir venda_itens da venda.\n");
+        }
+    }
+    
+    public void consultarVenda(){
+    
+        System.out.print("Digite a Data Inicial (ano/mes/dia): ");
+        String date1 = ve.nextLine();
+        System.out.print("Digite a Data Final (ano/mes/dia): ");
+        String date2 = ve.nextLine();
+        
+        try{
+        
+            ConexaoFactor conn = new ConexaoFactor();
+            Connection connection = conn.getConnection();
+            
+            String sql = "CALL relatorio_vendas(?, ?)";
+            
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            
+            stmt.setString(1, date1);
+            stmt.setString(2, date2);
+            
+            ResultSet rs = stmt.executeQuery();
+            
+            ResultSetMetaData metaData = rs.getMetaData();
+            int columnCount = metaData.getColumnCount();
+            
+            System.out.println("\nRelatório de Vendas");
+            System.out.println("--------------------------------------------------------------------------------------------------------------------------");
+            while(rs.next()){
+            
+                for(int i = 1; i <= columnCount; i++){
+                    String columnName = metaData.getColumnName(i);
+                    String value = rs.getString(i);
+                    System.out.print(columnName + ": " + value + " | ");
+                }
+                System.out.println();  
+            }
+            System.out.println("--------------------------------------------------------------------------------------------------------------------------");
 
+            stmt.close();
+            rs.close();
+            connection.close();
+            
+        } catch(Exception e){
+            System.out.println("Erro ao consultar venda.\n");
+        }
+    
+    }
+    
+    public void cancelarVenda(){
+    
+        System.out.println("Selecione o ID da venda para cancelar.\n");
+        
+        try{
+            
+            ConexaoFactor conn = new ConexaoFactor();
+            Connection connection = conn.getConnection();
+            
+            String sql = "UPDATE venda SET status = 'Cancelado' WHERE id_venda = ?";
+            String sql2 = "SELECT * FROM venda WHERE status = 'Emitido'";
+            
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            PreparedStatement stmt2 = connection.prepareStatement(sql2);
+            
+            ResultSet rs = stmt2.executeQuery();
+            
+            ResultSetMetaData metaData = rs.getMetaData();
+            int columnCount = metaData.getColumnCount();
+            
+            System.out.println("--------------------------------------------------------------------------------------------------------------------------");
+            while(rs.next()){
+            
+                for(int i = 1; i <= columnCount; i++){
+                    String columnName = metaData.getColumnName(i);
+                    String value = rs.getString(i);
+                    System.out.print(columnName + ": " + value + " | ");
+                }
+                System.out.println();  
+            }
+            System.out.println("--------------------------------------------------------------------------------------------------------------------------");
+            
+            System.out.print("ID: ");
+            int x = ve.nextInt();
+            
+            stmt.setInt(1, x);
+            
+            stmt.execute();
+            
+            System.out.println("Venda Cancelada com sucesso.\n");
+            
+            stmt.close();
+            stmt2.close();
+            rs.close();
+            connection.close();
+            
+        } catch(Exception e){
+            System.out.println("Erro ao cancelar venda.\n");
+            
+        }
+    
     }
     
 }
+

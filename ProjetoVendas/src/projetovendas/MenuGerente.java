@@ -44,6 +44,7 @@ public class MenuGerente implements Menu {
                     break;
                 case 4:
                   //  menuVendas(scanner);
+                    menuVendas();
                     break;
                 case 5:
                    // menuPagamentos(scanner);
@@ -177,8 +178,12 @@ public class MenuGerente implements Menu {
                     ven.realizarVenda();
                     break;
                 case 2:
+                    Venda ven2 = new Venda();
+                    ven2.consultarVenda();
                     break;
                 case 3:
+                    Venda ven3 = new Venda();
+                    ven3.cancelarVenda();
                     break;
             }
         }while(acao != 0);    }
