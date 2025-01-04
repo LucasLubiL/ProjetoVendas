@@ -361,5 +361,76 @@ public class Produto {
         }
         
     }
+    
+    public void atualizarEstoque(){
+    
+        System.out.println("Selecione o ID do produto para atualizar o estoque:");
+        
+        try{
+            
+            ConexaoFactor conn = new ConexaoFactor();
+            Connection connection = conn.getConnection();
+            
+            String sql = "SELECT * FROM relatorio_produto";
+            
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            
+            ResultSet rs = stmt.executeQuery();
+            
+            ResultSetMetaData metaData = rs.getMetaData();
+            int columnCount = metaData.getColumnCount();
+            
+            System.out.println("--------------------------------------------------------------------------------------------------------------------------");
+            while(rs.next()){
+                
+                for(int i = 1; i <= columnCount; i++){
+                
+                    String columnName = metaData.getColumnName(i);
+                    String value = rs.getString(i);
+                    System.out.print(columnName + ": " + value + " | ");
+                
+                }
+                System.out.println();
+                
+            }
+            System.out.println("--------------------------------------------------------------------------------------------------------------------------");
+            
+            System.out.print("ID: ");
+            int x = pro.nextInt();
+            System.out.print("Quantidade: ");
+            int y = pro.nextInt();
+            
+            try{
+                
+                ConexaoFactor conn2 = new ConexaoFactor();
+                Connection connection2 = conn2.getConnection();
+                
+                String sql2 = "CALL att_estoque(?, ?)";
+                
+                PreparedStatement stmt2 = connection2.prepareStatement(sql2);
+                
+                stmt2.setInt(1, x);
+                stmt2.setInt(2, y);
+                
+                stmt2.executeUpdate();
+                
+                connection2.close();
+                stmt2.close();
+                
+                System.out.println("Estoque atualizado com sucesso\n.");
+                
+            } catch(Exception e){
+                System.out.println("Erro ao atualizar estoque do produto selecionado por ID.\n");
+            }
+            
+            connection.close();
+            stmt.close();
+            rs.close();
+            
+        } catch(Exception e){
+            System.out.println("Erro ao atualizar estoque do produto.\n");
+        }
+        
+    }
       
 }

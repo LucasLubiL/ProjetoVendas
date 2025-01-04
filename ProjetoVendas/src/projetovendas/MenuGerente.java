@@ -97,6 +97,7 @@ public class MenuGerente implements Menu {
             System.out.println("1. Cadastrar Produto");
             System.out.println("2. Atualizar Produto");
             System.out.println("3. Excluir Produto");
+            System.out.println("4. Atualizar Estoque");
             System.out.print("Escolha uma ação: ");
             acao = scanner.nextInt();
 
@@ -116,6 +117,9 @@ public class MenuGerente implements Menu {
                     Produto pro3 = new Produto();
                     pro3.deleteProduto();
                     break;
+                case 4:
+                    Produto pro4 = new Produto();
+                    pro4.atualizarEstoque();
             }
         }while(acao != 0); 
         
@@ -160,6 +164,7 @@ public class MenuGerente implements Menu {
             System.out.println("\nVocê escolheu a tabela Venda.");
             System.out.println("0. Voltar a Pagina anterior");
             System.out.println("1. Realizar Venda");
+            System.out.println("2. Consultar Venda");
             System.out.print("Escolha uma ação: ");
             acao = scanner.nextInt();
 
@@ -168,6 +173,8 @@ public class MenuGerente implements Menu {
                     System.out.println("\nVoltando...\n");
                     break;
                 case 1:
+                    Venda ven = new Venda();
+                    ven.realizarVenda();
                     break;
                 case 2:
                     break;
