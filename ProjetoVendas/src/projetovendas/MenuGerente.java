@@ -116,6 +116,7 @@ public class MenuGerente implements Menu {
                 case 4:
                     Produto pro4 = new Produto();
                     pro4.atualizarEstoque();
+                    break;
             }
         }while(acao != 0); 
         
@@ -231,6 +232,7 @@ public class MenuGerente implements Menu {
                 case 1:
                     Relatorios rel = new Relatorios();
                     rel.relatorioProduto();
+                    break;
                 case 2:
                     Relatorios rel2 = new Relatorios();
                     rel2.vendaEmitida();

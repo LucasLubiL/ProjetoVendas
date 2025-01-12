@@ -16,22 +16,6 @@ public class Pagamento {
     
     Scanner pag = new Scanner(System.in);
     
-    private String nomeTipo;
-
-    public Pagamento(){};
-    
-    public Pagamento(String nomeTipo) {
-        this.nomeTipo = nomeTipo;
-    }
-
-    public String getNomeTipo() {
-        return nomeTipo;
-    }
-
-    public void setNomeTipo(String nomeTipo) {
-        this.nomeTipo = nomeTipo;
-    }
-    
     public void inserirPagamento(){
     
         System.out.print("Digite o nome do novo Pagamento:");

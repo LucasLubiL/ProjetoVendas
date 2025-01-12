@@ -1,7 +1,7 @@
 package projetovendas;
 
 import java.util.Scanner;
-import Connect.ConexaoFactor;
+import connect.ConexaoFactor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

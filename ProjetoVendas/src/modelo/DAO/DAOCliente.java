@@ -13,14 +13,6 @@ import java.sql.ResultSetMetaData;
  */
 public class Cliente extends Pessoa{
     
-    private int x;
-    
-    public Cliente(){};
-
-    public Cliente(String nome, String cpf, String endereco, String telefone) {
-        super(nome, cpf, endereco, telefone);
-    }
-    
     Scanner cli = new Scanner(System.in);
     
     public void inserirCliente(){
