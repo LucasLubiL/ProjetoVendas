@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/src/modelo/DAO/LoginDAO.java</file>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/src/modelo/dominio/Venda_itens.java</file>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/.git/config</file>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/src/modelo/dominio/RelatorioVendasPorData.java</file>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/src/controlador/CFuncionario.java</file>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/src/visao/FuncionarioView.java</file>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/src/controlador/CProduto.java</file>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/src/controlador/CMenuCaixa.java</file>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/src/modelo/dominio/Cliente.java</file>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/src/modelo/DAO/ProdutoDAO.java</file>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/src/modelo/dominio/Login.java</file>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/src/controlador/CVenda.java</file>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/src/visao/MenuCaixaView.java</file>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/src/modelo/dominio/Pagamento.java</file>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/src/modelo/DAO/VendaDAO.java</file>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/src/visao/MenuGerenteView.java</file>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/src/controlador/CRelatorio.java</file>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/src/controlador/CPagamento.java</file>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/src/modelo/dominio/Pessoa.java</file>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/src/visao/ClienteView.java</file>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/src/modelo/DAO/FuncionarioDAO.java</file>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/src/visao/VendaView.java</file>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/src/modelo/DAO/ClienteDAO.java</file>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/src/visao/MenuEstoquistaView.java</file>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/src/visao/Menu.java</file>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/src/controlador/CMenuEstoquista.java</file>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/src/visao/RelatorioView.java</file>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/src/visao/Principal.java</file>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/src/controlador/CMenuGerente.java</file>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/src/connect/ConexaoFactor.java</file>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/src/modelo/DAO/PagamentoDAO.java</file>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/src/controlador/CLogin.java</file>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/src/modelo/dominio/Venda.java</file>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/src/modelo/dominio/Produto.java</file>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/src/controlador/CCliente.java</file>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/src/visao/LoginView.java</file>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/src/visao/ProdutoView.java</file>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/src/modelo/dominio/Funcionario.java</file>
+            <file>file:/C:/Users/alexs/Desktop/Projeto%20BD2/TrabalhoPOO/src/visao/PagamentoView.java</file>
+        </group>
+    </open-files>
+</project-private>
